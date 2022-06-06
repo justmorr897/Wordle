@@ -1273,9 +1273,10 @@
             this.statsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.statsLabel.Location = new System.Drawing.Point(1045, -34);
             this.statsLabel.Name = "statsLabel";
+            this.statsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.statsLabel.Size = new System.Drawing.Size(782, 147);
             this.statsLabel.TabIndex = 154;
-            this.statsLabel.Text = "\r\n\r\n8 Games          75%              4                  7\r\n\r\n";
+            this.statsLabel.Text = "\r\n\r\n    8                  75%              4                  7\r\n\r\n";
             this.statsLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.statsLabel.Visible = false;
             // 
@@ -1481,6 +1482,7 @@
             this.statspromptsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.statspromptsLabel.Location = new System.Drawing.Point(1045, 73);
             this.statspromptsLabel.Name = "statspromptsLabel";
+            this.statspromptsLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.statspromptsLabel.Size = new System.Drawing.Size(782, 148);
             this.statspromptsLabel.TabIndex = 178;
             this.statspromptsLabel.Text = "  \r\n     PLAYED        WIN%       STREAK         BEST \r\n                         " +
@@ -1590,7 +1592,7 @@
             this.dictionaryListOutput.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dictionaryListOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dictionaryListOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.dictionaryListOutput.Location = new System.Drawing.Point(706, 10);
+            this.dictionaryListOutput.Location = new System.Drawing.Point(365, 6);
             this.dictionaryListOutput.Margin = new System.Windows.Forms.Padding(10);
             this.dictionaryListOutput.Multiline = true;
             this.dictionaryListOutput.Name = "dictionaryListOutput";

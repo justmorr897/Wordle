@@ -515,7 +515,6 @@ namespace Test
                 {
                     Inputs[i].Enabled = false;
                 }
-                //input6.Enabled = true;
                 InputChange();
             }
           
@@ -710,17 +709,21 @@ namespace Test
         }
         private void cpuChooseAnotherButton_Click(object sender, EventArgs e)
         {
-            GameReset();
-
             scoreSum = 0;
 
+            GameReset();
             cpuChooseButton_Click(sender, e);
-
-
         }
         private void backtomenuButton_Click(object sender, EventArgs e)
         {
             GameReset();
+
+            dictionaryAddButton.Visible = false;
+            dictionaryRemoveButton.Visible = false;
+            dictionaryListOutput.Visible = false;
+            dictionaryBackground.Visible = false;
+            dictionaryaddInput.Visible = false;
+            dictionaryremoveInput.Visible = false;
 
             playerchooseAnotherButton.Visible = false;
             cpuChooseAnotherButton.Visible = false;
@@ -803,13 +806,10 @@ namespace Test
 
                     File.WriteAllLines(path, readText);
                     readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
-
-
                 }
             }
 
             dictionaryremoveInput.Clear();
-
         }
         private void streakButton_Click(object sender, EventArgs e)
         {
@@ -818,12 +818,13 @@ namespace Test
         private void statsButton_Click(object sender, EventArgs e)
         {
             GameStats();
+            guessedcorrectlyLabel.Visible = false;
         }
 
         public void GameStats()
         {
-            statsLabel.Text = $"\r\n\r\n{gamesPlayed} Games          {winPercentage}%              {streak}                   {scoreSum}\r\n\r\n";
-
+            //statsLabel.Text = $"\r\n\r\n{gamesPlayed} Games          {winPercentage}%              {streak}                   {scoreSum}\r\n\r\n";
+            statsLabel.Text = $"\r\n\r\n    {gamesPlayed}                  {winPercentage}%              {streak}                  {scoreSum}\r\n\r\n";
             guessedcorrectlyLabel.Visible = true;
             statsLabel.Visible = true;
             statspromptsLabel.Visible = true;
