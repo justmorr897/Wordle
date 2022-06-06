@@ -48,7 +48,7 @@ namespace Test
         List<int> Guesses = new List<int>();
 
         List<string> readText;
-        string path = @"C:\Users\justin\Desktop\Wordle Resources\WordList2.txt";
+        string path = "Resources/WordList2.txt";
 
         Random randGen = new Random();
 
@@ -57,7 +57,7 @@ namespace Test
             InitializeComponent();
 
             // Open the file to read from.
-            readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
+            readText = File.ReadAllLines(path).ToList();
 
             GameStart();
 
@@ -759,10 +759,8 @@ namespace Test
         private void dictionaryButton_Click(object sender, EventArgs e)
         {
             dictionaryListOutput.Text = (Properties.Resources.WordList2);
-            richTextBox1.Text = Properties.Resources.WordList2;
 
             dictionaryListOutput.Visible = true;
-            richTextBox1.Visible = true;
             backtomenuButton.Visible = true;
             dictionaryaddInput.Visible = true;
             dictionaryremoveInput.Visible = true;
@@ -780,19 +778,14 @@ namespace Test
 
                 readText.Add(addWord);
                 dictionaryaddInput.Clear();
+                dictionaryListOutput.Text += addWord;
 
                 File.WriteAllLines(path, readText);
                 //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
 
-                dictionaryListOutput.Text = File.ReadAllLines(path).ToString();
+                //dictionaryListOutput.Text = File.ReadAllLines(path).ToString();
 
                 //dictionaryListOutput.Text = $"{File.ReadAllLines(path, Encoding.UTF8)}";
-                richTextBox1.Text = "";
-
-                //for (int i = 0; i < readText.Count; i++)
-                //{
-                //    richTextBox1.Text += $"{readText[i]}\n";
-                //}
             }
 
         }
@@ -824,7 +817,7 @@ namespace Test
         }
         private void statsButton_Click(object sender, EventArgs e)
         {
-
+            GameStats();
         }
 
         public void GameStats()

@@ -84,7 +84,9 @@
     <None Include="Resources\Other potential List.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WordList2.txt" />
+    <None Include="Resources\WordList2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

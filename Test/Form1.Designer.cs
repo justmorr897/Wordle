@@ -131,7 +131,6 @@
             this.dictionaryAddButton = new System.Windows.Forms.Button();
             this.dictionaryRemoveButton = new System.Windows.Forms.Button();
             this.dictionaryListOutput = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // input1
@@ -1602,29 +1601,12 @@
             this.dictionaryListOutput.TabIndex = 187;
             this.dictionaryListOutput.Visible = false;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.richTextBox1.Location = new System.Drawing.Point(1269, 10);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(551, 1000);
-            this.richTextBox1.TabIndex = 188;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.Visible = false;
-            // 
             // Background
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1862, 1018);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dictionaryListOutput);
             this.Controls.Add(this.dictionaryRemoveButton);
             this.Controls.Add(this.dictionaryAddButton);
@@ -1841,7 +1823,6 @@
         private System.Windows.Forms.Button dictionaryAddButton;
         private System.Windows.Forms.Button dictionaryRemoveButton;
         private System.Windows.Forms.TextBox dictionaryListOutput;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
