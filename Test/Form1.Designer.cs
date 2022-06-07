@@ -1285,8 +1285,9 @@
             this.guessedcorrectlyLabel.BackColor = System.Drawing.Color.Black;
             this.guessedcorrectlyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessedcorrectlyLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessedcorrectlyLabel.Location = new System.Drawing.Point(1045, 221);
+            this.guessedcorrectlyLabel.Location = new System.Drawing.Point(1140, 214);
             this.guessedcorrectlyLabel.Name = "guessedcorrectlyLabel";
+            this.guessedcorrectlyLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessedcorrectlyLabel.Size = new System.Drawing.Size(782, 237);
             this.guessedcorrectlyLabel.TabIndex = 155;
             this.guessedcorrectlyLabel.Text = "\r\nYOU GUESSED CORRECTLY\r\n\r\n\r\nGUESS DISTRIBUTION";
@@ -1298,8 +1299,9 @@
             this.guessstatLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel1.Location = new System.Drawing.Point(1038, 458);
+            this.guessstatLabel1.Location = new System.Drawing.Point(1163, 451);
             this.guessstatLabel1.Name = "guessstatLabel1";
+            this.guessstatLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel1.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel1.TabIndex = 157;
             this.guessstatLabel1.Text = "  1";
@@ -1311,8 +1313,9 @@
             this.guessstatLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel2.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel2.Location = new System.Drawing.Point(1038, 528);
+            this.guessstatLabel2.Location = new System.Drawing.Point(1163, 521);
             this.guessstatLabel2.Name = "guessstatLabel2";
+            this.guessstatLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel2.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel2.TabIndex = 158;
             this.guessstatLabel2.Text = "  2";
@@ -1324,8 +1327,9 @@
             this.guessstatLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel3.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel3.Location = new System.Drawing.Point(1038, 596);
+            this.guessstatLabel3.Location = new System.Drawing.Point(1163, 589);
             this.guessstatLabel3.Name = "guessstatLabel3";
+            this.guessstatLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel3.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel3.TabIndex = 159;
             this.guessstatLabel3.Text = "  3";
@@ -1337,8 +1341,9 @@
             this.guessstatLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel4.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel4.Location = new System.Drawing.Point(1038, 663);
+            this.guessstatLabel4.Location = new System.Drawing.Point(1163, 656);
             this.guessstatLabel4.Name = "guessstatLabel4";
+            this.guessstatLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel4.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel4.TabIndex = 160;
             this.guessstatLabel4.Text = "  4";
@@ -1350,8 +1355,9 @@
             this.guessstatLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel5.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel5.Location = new System.Drawing.Point(1038, 733);
+            this.guessstatLabel5.Location = new System.Drawing.Point(1163, 726);
             this.guessstatLabel5.Name = "guessstatLabel5";
+            this.guessstatLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel5.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel5.TabIndex = 161;
             this.guessstatLabel5.Text = "  5";
@@ -1363,8 +1369,9 @@
             this.guessstatLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel7.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel7.Location = new System.Drawing.Point(1038, 871);
+            this.guessstatLabel7.Location = new System.Drawing.Point(1163, 864);
             this.guessstatLabel7.Name = "guessstatLabel7";
+            this.guessstatLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel7.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel7.TabIndex = 168;
             this.guessstatLabel7.Text = "  7";
@@ -1376,7 +1383,7 @@
             this.guessdistributionLabel1.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel1.Location = new System.Drawing.Point(1107, 474);
+            this.guessdistributionLabel1.Location = new System.Drawing.Point(1232, 467);
             this.guessdistributionLabel1.Name = "guessdistributionLabel1";
             this.guessdistributionLabel1.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel1.TabIndex = 171;
@@ -1389,7 +1396,7 @@
             this.guessdistributionLabel3.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel3.Location = new System.Drawing.Point(1107, 612);
+            this.guessdistributionLabel3.Location = new System.Drawing.Point(1232, 605);
             this.guessdistributionLabel3.Name = "guessdistributionLabel3";
             this.guessdistributionLabel3.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel3.TabIndex = 172;
@@ -1402,7 +1409,7 @@
             this.guessdistributionLabel2.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel2.Location = new System.Drawing.Point(1107, 544);
+            this.guessdistributionLabel2.Location = new System.Drawing.Point(1232, 537);
             this.guessdistributionLabel2.Name = "guessdistributionLabel2";
             this.guessdistributionLabel2.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel2.TabIndex = 173;
@@ -1415,7 +1422,7 @@
             this.guessdistributionLabel4.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel4.Location = new System.Drawing.Point(1107, 679);
+            this.guessdistributionLabel4.Location = new System.Drawing.Point(1232, 672);
             this.guessdistributionLabel4.Name = "guessdistributionLabel4";
             this.guessdistributionLabel4.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel4.TabIndex = 174;
@@ -1428,7 +1435,7 @@
             this.guessdistributionLabel5.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel5.Location = new System.Drawing.Point(1107, 749);
+            this.guessdistributionLabel5.Location = new System.Drawing.Point(1232, 742);
             this.guessdistributionLabel5.Name = "guessdistributionLabel5";
             this.guessdistributionLabel5.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel5.TabIndex = 175;
@@ -1441,7 +1448,7 @@
             this.guessdistributionLabel6.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel6.Location = new System.Drawing.Point(1107, 819);
+            this.guessdistributionLabel6.Location = new System.Drawing.Point(1232, 812);
             this.guessdistributionLabel6.Name = "guessdistributionLabel6";
             this.guessdistributionLabel6.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel6.TabIndex = 176;
@@ -1454,8 +1461,9 @@
             this.guessstatLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guessstatLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessstatLabel6.ForeColor = System.Drawing.Color.LimeGreen;
-            this.guessstatLabel6.Location = new System.Drawing.Point(1038, 801);
+            this.guessstatLabel6.Location = new System.Drawing.Point(1163, 794);
             this.guessstatLabel6.Name = "guessstatLabel6";
+            this.guessstatLabel6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.guessstatLabel6.Size = new System.Drawing.Size(789, 70);
             this.guessstatLabel6.TabIndex = 162;
             this.guessstatLabel6.Text = "  6";
@@ -1467,7 +1475,7 @@
             this.guessdistributionLabel7.BackColor = System.Drawing.Color.LimeGreen;
             this.guessdistributionLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guessdistributionLabel7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.guessdistributionLabel7.Location = new System.Drawing.Point(1107, 889);
+            this.guessdistributionLabel7.Location = new System.Drawing.Point(1232, 882);
             this.guessdistributionLabel7.Name = "guessdistributionLabel7";
             this.guessdistributionLabel7.Size = new System.Drawing.Size(600, 38);
             this.guessdistributionLabel7.TabIndex = 177;
@@ -1592,7 +1600,7 @@
             this.dictionaryListOutput.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dictionaryListOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dictionaryListOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.dictionaryListOutput.Location = new System.Drawing.Point(763, 19);
+            this.dictionaryListOutput.Location = new System.Drawing.Point(707, 32);
             this.dictionaryListOutput.Margin = new System.Windows.Forms.Padding(10);
             this.dictionaryListOutput.Multiline = true;
             this.dictionaryListOutput.Name = "dictionaryListOutput";

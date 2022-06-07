@@ -19,11 +19,7 @@ namespace Test
         string answer;
         string gameState;
         string guessAnswer1;
-        string guessAnswer2;
-        string guessAnswer3;
-        string guessAnswer4;
-        string guessAnswer5;
-        string guessAnswer6;
+        string path = "Resources/WordList2.txt";
 
         int guess = 0;
         int index;
@@ -33,7 +29,7 @@ namespace Test
         int winPercentage;
         int streak;
         int bestScore;
-        int enterbuttonCount;
+        int previousScore;
         int lockedIndex;
 
         List<System.Windows.Forms.TextBox> Inputs = new List<System.Windows.Forms.TextBox>();
@@ -44,11 +40,9 @@ namespace Test
 
         List<string> AnswerCharacters = new List<string>(new string[] { });
         List<string> Letters = new List<string>();
+        List<string> readText;
         List<int> Scores = new List<int>();
         List<int> Guesses = new List<int>();
-
-        List<string> readText;
-        string path = "Resources/WordList2.txt";
 
         Random randGen = new Random();
 
@@ -136,7 +130,6 @@ namespace Test
             GuessStatlabels.Add(guessstatLabel5);
             GuessStatlabels.Add(guessstatLabel6);
             GuessStatlabels.Add(guessstatLabel7);
-
         }
         private void playerChooseButton_Click(object sender, EventArgs e)
         {
@@ -154,7 +147,9 @@ namespace Test
             enterLabel.Size = new Size(310, 55);
 
             cpuChooseAnotherButton.Visible = false;
-            backtomenuButton.Visible = false;
+            backtomenuButton.Visible = true;
+            statsLabel.Visible = false;
+            statspromptsLabel.Visible = false;
         }
         private void cpuChooseButton_Click(object sender, EventArgs e)
         {
@@ -164,6 +159,9 @@ namespace Test
             enterButton.Visible = true;
 
             enterLabel.Visible = false;
+            statsLabel.Visible = false;
+            statspromptsLabel.Visible = false;
+
             backgroundLabel.Size = new Size(0, 0);
             enterLabel.Size = new Size(0, 0);
             answerInput1.Size = new Size(0, 0);
@@ -249,9 +247,6 @@ namespace Test
         public void GameInitialize()
         {
             this.BackColor = Color.Black;
-
-            // Stuff from Stack OverFlow
-
 
             LetterButtons.Add(qButton);
             LetterButtons.Add(wButton);
@@ -373,8 +368,6 @@ namespace Test
             }
             else
             {
-
-
                 char1 = answerInput1.Text;
                 char2 = answerInput2.Text;
                 char3 = answerInput3.Text;
@@ -389,9 +382,11 @@ namespace Test
                 AnswerCharacters.Add(char4);
                 AnswerCharacters.Add(char5);
 
-
                 if (readText.Contains(answer.ToLower()))
                 {
+                    index = 0;
+                    lockedIndex = 0;
+
                     gamesPlayed++;
 
                     label1.Visible = false;
@@ -470,24 +465,23 @@ namespace Test
             {
                 Inputs[index].Clear();
 
+                Inputs[index].Focus(); //Look at this line
                 index--;
-                Inputs[index].Focus();
+
             }
 
-            else if ((e.KeyCode == Keys.Enter) && (index == 4 || index == 9 || index == 14 || index == 19|| index == 24 || index == 29))
+            else if ((e.KeyCode == Keys.Enter) && (index == 4 || index == 9 || index == 14 || index == 19 || index == 24 || index == 29))
             {
                 enterButton_Click(sender, e);
             }
         }
         private void enterButton_Click(object sender, EventArgs e)
         {
-            //enterbuttonCount++;
-            
-            if(index == 4)
+            if (index == 4)
             {
                 guessAnswer1 = input1.Text + input2.Text + input3.Text + input4.Text + input5.Text;
             }
-            else if(index == 9)
+            else if (index == 9)
             {
                 guessAnswer1 = input6.Text + input7.Text + input8.Text + input9.Text + input10.Text;
             }
@@ -508,7 +502,6 @@ namespace Test
                 guessAnswer1 = input26.Text + input27.Text + input28.Text + input29.Text + input30.Text;
             }
 
-
             if (readText.Contains(guessAnswer1.ToLower()))
             {
                 for (int i = lockedIndex; i <= lockedIndex + 4; i++)
@@ -517,7 +510,6 @@ namespace Test
                 }
                 InputChange();
             }
-          
             else
             {
                 answerLabel.Visible = true;
@@ -530,7 +522,6 @@ namespace Test
         }
         public void InputChange()
         {
-
             guess++;
 
             if (index == 4)
@@ -538,36 +529,30 @@ namespace Test
                 input6.Enabled = true;
                 input6.Focus();
             }
-
             else if (index == 9)
             {
                 input11.Enabled = true;
                 input11.Focus();
             }
-
             else if (index == 14)
             {
                 input16.Enabled = true;
                 input16.Focus();
             }
-
             else if (index == 19)
             {
                 input21.Enabled = true;
                 input21.Focus();
             }
-
             else if (index == 24)
             {
                 input26.Enabled = true;
                 input26.Focus();
             }
-
-            else 
+            else
             {
-                //CheckAnswer();
+                CheckAnswer();
             }
-
 
             for (int i = lockedIndex; i <= lockedIndex + 4; i++)
             {
@@ -591,12 +576,11 @@ namespace Test
                 {
                     Inputs[i].BackColor = Color.Yellow;
                 }
-                if(Inputs[i].Text == AnswerCharacters[i-lockedIndex])
+                if (Inputs[i].Text == AnswerCharacters[i - lockedIndex])
                 {
                     Inputs[i].BackColor = Color.Green;
                 }
             }
-
 
             if (guessAnswer1 == answer)
             {
@@ -610,7 +594,6 @@ namespace Test
 
                 Guesses.Add(guess);
 
-
                 for (int i = 0; i < Letters.Count; i++)
                 {
                     if (answer.Contains(Letters[i]))
@@ -619,15 +602,21 @@ namespace Test
                     }
                 }
 
-                this.Text = $"Score:{scoreSum}, Streak: {streak}, Games:{gamesPlayed}, Win %: {winPercentage}%, #Guesses: {guess}";
+                if (scoreSum > previousScore)
+                {
+                    bestScore = scoreSum;
+                }
+                previousScore = scoreSum;
+
+                this.Text = $"Score:{bestScore}, Streak: {streak}, Games:{gamesPlayed}, Win %: {winPercentage}%, #Guesses: {guess}";
                 GameStats();
             }
-            else if(index == 29 && guessAnswer1 != answer)
+            else if (index == 29 && guessAnswer1 != answer)
             {
                 this.Text = $"The word was {answer}";
             }
 
-            lockedIndex = index+1;
+            lockedIndex = index + 1;
 
         }
         public void LetterButtonColours()
@@ -657,18 +646,25 @@ namespace Test
         {
             if (input26.Text != char1 || input27.Text != char2 || input28.Text != char3 || input29.Text != char4 || input30.Text != char5)
             {
+                tryagainButton.Visible = false;
+                enterButton.Visible = false;
+
                 gameState = "Lost";
                 streak = 0;
+
+                guessedcorrectlyLabel.Text = $"\r\nTHE WORD WAS {answer}\r\n\r\n\r\nGUESS DISTRIBUTION";
                 //answerLabel.Visible = true;
                 //answerLabel.Text = $"You Guessed Incorrectly \n:( \n the word was {answer} ";
                 Guesses.Add(guess);
+
                 GameStats();
             }
         }
 
         private void tryagainButton_Click(object sender, EventArgs e)
         {
-            enterbuttonCount = 0;
+            index = 0;
+            lockedIndex = 0;
             guess = 0;
 
             for (int i = 0; i < Inputs.Count; i++)
@@ -709,6 +705,8 @@ namespace Test
         }
         private void cpuChooseAnotherButton_Click(object sender, EventArgs e)
         {
+            index = 0;
+            lockedIndex = 0;
             scoreSum = 0;
 
             GameReset();
@@ -724,16 +722,16 @@ namespace Test
             dictionaryBackground.Visible = false;
             dictionaryaddInput.Visible = false;
             dictionaryremoveInput.Visible = false;
-
             playerchooseAnotherButton.Visible = false;
             cpuChooseAnotherButton.Visible = false;
             backtomenuButton.Visible = false;
+            statsLabel.Visible = false;
+            statspromptsLabel.Visible = false;
             GameStart();
         }
 
         public void GameReset()
         {
-            enterbuttonCount = 0;
             guess = 0;
 
             for (int i = 0; i < Inputs.Count; i++)
@@ -755,14 +753,12 @@ namespace Test
             statsLabel.Visible = false;
             statspromptsLabel.Visible = false;
             guessedcorrectlyLabel.Visible = false;
-
             answerLabel.Visible = false;
         }
 
         private void dictionaryButton_Click(object sender, EventArgs e)
         {
-            dictionaryListOutput.Text = (Properties.Resources.WordList2);
-
+            //dictionaryListOutput.Text = (Properties.Resources.WordList2);
             dictionaryListOutput.Visible = true;
             backtomenuButton.Visible = true;
             dictionaryaddInput.Visible = true;
@@ -770,12 +766,12 @@ namespace Test
             dictionaryAddButton.Visible = true;
             dictionaryRemoveButton.Visible = true;
             dictionaryBackground.Visible = true;
-
-            //File.WriteAllLines(path, readText);
+            statsLabel.Visible = false;
+            statspromptsLabel.Visible = false;
         }
         private void dictionaryAddButton_Click(object sender, EventArgs e)
         {
-            if(dictionaryaddInput.TextLength == 5)
+            if (dictionaryaddInput.TextLength == 5)
             {
                 string addWord = dictionaryaddInput.Text.ToLower();
 
@@ -792,7 +788,6 @@ namespace Test
             }
 
         }
-
         private void dictionaryRemoveButton_Click(object sender, EventArgs e)
         {
             string removeWord = dictionaryremoveInput.Text.ToLower();
@@ -811,14 +806,24 @@ namespace Test
 
             dictionaryremoveInput.Clear();
         }
+
         private void streakButton_Click(object sender, EventArgs e)
         {
 
         }
         private void statsButton_Click(object sender, EventArgs e)
         {
-            GameStats();
-            guessedcorrectlyLabel.Visible = false;
+            if(statsLabel.Visible == true)
+            {
+                statsLabel.Visible = false;
+                statspromptsLabel.Visible = false;
+            }
+            else
+            {
+                GameStats();
+                guessedcorrectlyLabel.Visible = false;
+            }
+            
         }
 
         public void GameStats()
@@ -829,13 +834,13 @@ namespace Test
             statsLabel.Visible = true;
             statspromptsLabel.Visible = true;
 
-            for (int i = 0; i < gamesPlayed; i++)
+            for (int i = 0; i < Guesses.Count; i++)
             {
                 GuessDistributions[i].Visible = true;
                 GuessStatlabels[i].Visible = true;
                 GuessDistributions[i].Text = $"{Guesses[i]}";
             }
-            for (int i = 0; i < gamesPlayed; i++)
+            for (int i = 0; i < Guesses.Count; i++)
             {
                 if (Guesses[i] == 1)
                 {
