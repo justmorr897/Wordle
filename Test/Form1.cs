@@ -130,6 +130,33 @@ namespace Test
             GuessStatlabels.Add(guessstatLabel5);
             GuessStatlabels.Add(guessstatLabel6);
             GuessStatlabels.Add(guessstatLabel7);
+
+            LetterButtons.Add(qButton);
+            LetterButtons.Add(wButton);
+            LetterButtons.Add(eButton);
+            LetterButtons.Add(rButton);
+            LetterButtons.Add(tButton);
+            LetterButtons.Add(yButton);
+            LetterButtons.Add(uButton);
+            LetterButtons.Add(iButton);
+            LetterButtons.Add(oButton);
+            LetterButtons.Add(pButton);
+            LetterButtons.Add(aButton);
+            LetterButtons.Add(sButton);
+            LetterButtons.Add(dButton);
+            LetterButtons.Add(fButton);
+            LetterButtons.Add(gButton);
+            LetterButtons.Add(hButton);
+            LetterButtons.Add(jButton);
+            LetterButtons.Add(kButton);
+            LetterButtons.Add(lButton);
+            LetterButtons.Add(zButton);
+            LetterButtons.Add(xButton);
+            LetterButtons.Add(cButton);
+            LetterButtons.Add(vButton);
+            LetterButtons.Add(bButton);
+            LetterButtons.Add(nButton);
+            LetterButtons.Add(mButton);
         }
         private void playerChooseButton_Click(object sender, EventArgs e)
         {
@@ -142,11 +169,19 @@ namespace Test
             enterLabel.Visible = true;
             backgroundLabel.Size = new Size(1316, 1050);
             enterLabel.Size = new Size(460, 82);
+
             answerInput1.Size = new Size(45, 47);
             answerInput2.Size = new Size(45, 47);
             answerInput3.Size = new Size(45, 47);
             answerInput4.Size = new Size(45, 47);
             answerInput5.Size = new Size(45, 47);
+            answerInput1.Clear();
+            answerInput2.Clear();
+            answerInput3.Clear();
+            answerInput4.Clear();
+            answerInput5.Clear();
+
+
             enterAnswerButton.Size = new Size(300, 54);
             enterLabel.Size = new Size(310, 55);
 
@@ -163,6 +198,9 @@ namespace Test
         }
         private void cpuChooseButton_Click(object sender, EventArgs e)
         {
+            index = 0;
+            lockedIndex = 0;
+            guess = 0;
             gamesPlayed++;
 
             this.WindowState = FormWindowState.Maximized;
@@ -254,7 +292,7 @@ namespace Test
         public void GameStart()
         {
             dictionaryButton.Size = new Size(123, 35);
-            streakButton.Size = new Size(123, 35);
+            //streakButton.Size = new Size(123, 35);
             statsButton.Size = new Size(123, 35);
             cpuChooseButton.Size = new Size(220, 98);
             playerChooseButton.Size = new Size(220, 98);
@@ -264,34 +302,7 @@ namespace Test
         }
         public void GameInitialize()
         {
-            this.BackColor = Color.Black;
-
-            LetterButtons.Add(qButton);
-            LetterButtons.Add(wButton);
-            LetterButtons.Add(eButton);
-            LetterButtons.Add(rButton);
-            LetterButtons.Add(tButton);
-            LetterButtons.Add(yButton);
-            LetterButtons.Add(uButton);
-            LetterButtons.Add(iButton);
-            LetterButtons.Add(oButton);
-            LetterButtons.Add(pButton);
-            LetterButtons.Add(aButton);
-            LetterButtons.Add(sButton);
-            LetterButtons.Add(dButton);
-            LetterButtons.Add(fButton);
-            LetterButtons.Add(gButton);
-            LetterButtons.Add(hButton);
-            LetterButtons.Add(jButton);
-            LetterButtons.Add(kButton);
-            LetterButtons.Add(lButton);
-            LetterButtons.Add(zButton);
-            LetterButtons.Add(xButton);
-            LetterButtons.Add(cButton);
-            LetterButtons.Add(vButton);
-            LetterButtons.Add(bButton);
-            LetterButtons.Add(nButton);
-            LetterButtons.Add(mButton);
+            
 
             statsButton.Size = new Size(0, 0);
             streakButton.Size = new Size(0, 0);
@@ -344,6 +355,7 @@ namespace Test
             }
             else if (e.KeyCode == Keys.Back)
             {
+                answerLabel.Visible = false;
                 index--;
                 if (index <= -1)
                 {
@@ -460,6 +472,7 @@ namespace Test
                 }
                 else
                 {
+                    answerInput5.Focus();
                     answerLabel.Visible = true;
                     answerLabel.Text = $"Please enter a valid answer word";
                 }
@@ -481,10 +494,14 @@ namespace Test
             }
             else if (e.KeyCode == Keys.Back && index >= lockedIndex)
             {
+                answerLabel.Visible = false;
                 Inputs[index].Clear();
-
-                Inputs[index].Focus(); //Look at this line
                 index--;
+                if(index < 0)
+                {
+                    index = 0;
+                }
+                Inputs[index].Focus(); //Look at this line
 
             }
             else if ((e.KeyCode == Keys.Enter) && (index == 4 || index == 9 || index == 14 || index == 19 || index == 24 || index == 29))
@@ -526,6 +543,8 @@ namespace Test
                     Inputs[i].Enabled = false;
                 }
                 InputChange();
+                LetterButtonColours();
+
             }
             else
             {
@@ -535,7 +554,6 @@ namespace Test
                 label1.Text = $"Please enter a valid word";
             }
 
-            LetterButtonColours();
         }
         public void InputChange()
         {
@@ -604,7 +622,7 @@ namespace Test
                 gameState = "Won";
                 streak++;
                 gamesWon++;
-                winPercentage = gamesPlayed / gamesWon * 100;
+                winPercentage = gamesWon / gamesPlayed * 100;
 
                 tryagainButton.Visible = false;
                 enterButton.Visible = false;
@@ -640,7 +658,7 @@ namespace Test
         {
             for (int i = 0; i < Inputs.Count; i++)
             {
-                if (Inputs[i].BackColor != Color.DarkGray)
+                if (Inputs[i].BackColor != SystemColors.InactiveCaptionText)
                 {
                     for (int n = 0; n < LetterButtons.Count; n++)
                     {
@@ -654,9 +672,29 @@ namespace Test
                             LetterButtons[n].BackColor = Color.Yellow;
                             break;
                         }
+                        else if (LetterButtons[n].Text == (Inputs[i].Text) && Inputs[i].BackColor == Color.Black)
+                        {
+                            LetterButtons[n].BackColor = Color.DimGray;
+                            break;
+                        }
                     }
                 }
             }
+
+            //for(int i = 0; i < Inputs.Count; i++)
+            //{
+            //    if(Inputs[i].BackColor != Color.Green || Inputs[i].BackColor != Color.Yellow)
+            //    {
+            //       for(int n = 0; n < LetterButtons.Count; n++)
+            //       {
+            //            if (LetterButtons[n].Text == (Inputs[i].Text) && Inputs[i].BackColor == SystemColors.InactiveCaptionText)
+            //            {
+            //                LetterButtons[n].BackColor = Color.Pink;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
 
         }
         public void CheckAnswer()
@@ -724,6 +762,7 @@ namespace Test
         {
             index = 0;
             lockedIndex = 0;
+            guess = 0;
             scoreSum = 0;
 
             GameReset();
@@ -803,8 +842,9 @@ namespace Test
                 string addWord = dictionaryaddInput.Text.ToLower();
 
                 readText.Add(addWord);
+                readText.Sort();
                 dictionaryaddInput.Clear();
-                dictionaryListOutput.Text += addWord;
+                dictionaryListOutput.Text += $"{addWord}\n";
 
                 File.WriteAllLines(path, readText);
                 //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
@@ -863,7 +903,7 @@ namespace Test
         public void GameStats()
         {
             //statsLabel.Text = $"\r\n\r\n{gamesPlayed} Games          {winPercentage}%              {streak}                   {scoreSum}\r\n\r\n";
-            statsLabel.Text = $"\r\n\r\n    {guess}                  {winPercentage}%              {streak}                  {scoreSum}\r\n\r\n";
+            statsLabel.Text = $"\r\n\r\n    {gamesPlayed}                  {winPercentage}%              {streak}                  {bestScore}\r\n\r\n";
             guessedcorrectlyLabel.Visible = true;
             statsLabel.Visible = true;
             statspromptsLabel.Visible = true;

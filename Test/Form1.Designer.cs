@@ -135,7 +135,7 @@
             // 
             // input1
             // 
-            this.input1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.input1.BackColor = System.Drawing.Color.Black;
             this.input1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.input1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.input1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -152,7 +152,7 @@
             // 
             // input2
             // 
-            this.input2.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.input2.BackColor = System.Drawing.Color.Black;
             this.input2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.input2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.input2.Enabled = false;
@@ -170,7 +170,7 @@
             // 
             // input3
             // 
-            this.input3.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.input3.BackColor = System.Drawing.Color.Black;
             this.input3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.input3.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.input3.Enabled = false;
@@ -188,7 +188,7 @@
             // 
             // input4
             // 
-            this.input4.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.input4.BackColor = System.Drawing.Color.Black;
             this.input4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.input4.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.input4.Enabled = false;
@@ -206,7 +206,7 @@
             // 
             // input5
             // 
-            this.input5.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.input5.BackColor = System.Drawing.Color.Black;
             this.input5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.input5.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.input5.Enabled = false;
@@ -1230,7 +1230,7 @@
             this.statsButton.BackColor = System.Drawing.Color.Black;
             this.statsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.statsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.statsButton.Location = new System.Drawing.Point(416, -4);
+            this.statsButton.Location = new System.Drawing.Point(214, -4);
             this.statsButton.Name = "statsButton";
             this.statsButton.Size = new System.Drawing.Size(0, 0);
             this.statsButton.TabIndex = 149;
