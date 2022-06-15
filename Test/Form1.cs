@@ -38,9 +38,10 @@ namespace Test
         List<System.Windows.Forms.Label> GuessDistributions = new List<System.Windows.Forms.Label>();
         List<System.Windows.Forms.Label> GuessStatlabels = new List<System.Windows.Forms.Label>();
 
-        List<string> AnswerCharacters = new List<string>(new string[] { });
+        List<string> AnswerCharacters = new List<string>();
         List<string> Letters = new List<string>();
         List<string> readText;
+
         List<int> Scores = new List<int>();
         List<int> Guesses = new List<int>();
 
@@ -486,6 +487,7 @@ namespace Test
                && (index - lockedIndex < 4))
             {
                 TextBox tb = (TextBox)sender;
+                
                 index = tb.TabIndex + 1;
 
                 Inputs[index].Enabled = true;
@@ -501,6 +503,7 @@ namespace Test
                 {
                     index = 0;
                 }
+                
                 Inputs[index].Focus(); //Look at this line
 
             }
@@ -544,7 +547,6 @@ namespace Test
                 }
                 InputChange();
                 LetterButtonColours();
-
             }
             else
             {
@@ -816,7 +818,17 @@ namespace Test
 
         private void dictionaryButton_Click(object sender, EventArgs e)
         {
-            dictionaryListOutput.Text = (Properties.Resources.WordList2);
+            //dictionaryListOutput.Text = (Properties.Resources.WordList2);
+            dictionaryListOutput.Text = "";
+
+            //dictionaryListOutput.Text = File.AppendAllLines(path, Encoding.UTF8);
+            dictionaryListOutput.Text = File.ReadAllText(path);
+
+            //for (int i = 0; i < readText.Count(); i++)
+            //{
+            //    dictionaryListOutput.Text += $"\n {readText[i]}\n, ";
+            //}
+
             this.WindowState = FormWindowState.Maximized;
             
             for (int i = 0; i < GuessDistributions.Count; i++)
@@ -840,18 +852,33 @@ namespace Test
             if (dictionaryaddInput.TextLength == 5)
             {
                 string addWord = dictionaryaddInput.Text.ToLower();
+                if (readText.Contains(addWord))
+                {
+                    answerLabel.Visible = true;
+                    answerLabel.Text = "Word is already in dictionary";
+                    this.Text = "Word is already in dictionary";
 
-                readText.Add(addWord);
-                readText.Sort();
-                dictionaryaddInput.Clear();
-                dictionaryListOutput.Text += $"{addWord}\n";
+                }
+                else
+                {
+                    readText.Add(addWord);
+                    readText.Sort();
+                    File.WriteAllLines(path, readText);
 
-                File.WriteAllLines(path, readText);
+                    dictionaryaddInput.Clear();
+                    dictionaryListOutput.Text = File.ReadAllText(path);
+                }
+               
+
+                //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
+
                 //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
 
                 //dictionaryListOutput.Text = File.ReadAllLines(path).ToString();
 
                 //dictionaryListOutput.Text = $"{File.ReadAllLines(path, Encoding.UTF8)}";
+                Refresh();
+
             }
 
         }
@@ -872,6 +899,11 @@ namespace Test
             }
 
             dictionaryremoveInput.Clear();
+
+            dictionaryListOutput.Text = File.ReadAllText(path);
+
+
+            Refresh();
         }
 
         private void streakButton_Click(object sender, EventArgs e)
