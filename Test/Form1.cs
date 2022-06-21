@@ -1101,18 +1101,24 @@ namespace Test
 
         public void GameStats()
         {
-            //
+            //displays the game stats in a spaced out manner
             statsLabel.Text = $"\r\n\r\n    {gamesPlayed}                  {winPercentage}%              {streak}                  {bestScore}\r\n\r\n";
+            
             guessedcorrectlyLabel.Visible = true;
             statsLabel.Visible = true;
             statspromptsLabel.Visible = true;
 
+            //for the number of guesses which is equal to the amount of games finsihed
+           
             for (int i = 0; i < Guesses.Count; i++)
             {
+                //display the same amount of GuessDistribution label and stat labels
+                //And change the text of the GuessDistribution label to be the number of guesses that game took
                 GuessDistributions[i].Visible = true;
                 GuessStatlabels[i].Visible = true;
                 GuessDistributions[i].Text = $"{Guesses[i]}";
             }
+
             for (int i = 0; i < Guesses.Count; i++)
             {
                 if (Guesses[i] == 1)
