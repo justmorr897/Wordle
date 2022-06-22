@@ -1251,7 +1251,6 @@
             this.streakButton.TabIndex = 148;
             this.streakButton.Text = "Streaks";
             this.streakButton.UseVisualStyleBackColor = false;
-            this.streakButton.Click += new System.EventHandler(this.streakButton_Click);
             // 
             // statsButton
             // 

@@ -824,7 +824,7 @@ namespace Test
             //This function is for the buttons below the guess grid which show which letters have been guessed yet
             for (int i = 0; i < Inputs.Count; i++)
             {
-                if (Inputs[i].BackColor != SystemColors.InactiveCaptionText)
+                if (Inputs[i].BackColor != Color.White)
                 {
                     for (int n = 0; n < LetterButtons.Count; n++)
                     {
@@ -984,25 +984,25 @@ namespace Test
 
         private void dictionaryButton_Click(object sender, EventArgs e)
         {
-            //dictionaryListOutput.Text = (Properties.Resources.WordList2);
+            //clear the text of the textbox
             dictionaryListOutput.Text = "";
 
-            //dictionaryListOutput.Text = File.AppendAllLines(path, Encoding.UTF8);
+            //fill the text with the word list
             dictionaryListOutput.Text = File.ReadAllText(path);
 
-            //for (int i = 0; i < readText.Count(); i++)
-            //{
-            //    dictionaryListOutput.Text += $"\n {readText[i]}\n, ";
-            //}
-
+            //maximize the form to make a smooth experience since it is too big for the regular scene 
             this.WindowState = FormWindowState.Maximized;
             
+            //get rid of elements that could still be on the screen
             for (int i = 0; i < GuessDistributions.Count; i++)
             {
                 GuessDistributions[i].Visible = false;
                 GuessStatlabels[i].Visible = false;
             }
+            statsLabel.Visible = false;
+            statspromptsLabel.Visible = false;
 
+            //make elements visible that need to be
             dictionaryListOutput.Visible = true;
             backtomenuButton.Visible = true;
             dictionaryaddInput.Visible = true;
@@ -1010,14 +1010,18 @@ namespace Test
             dictionaryAddButton.Visible = true;
             dictionaryRemoveButton.Visible = true;
             dictionaryBackground.Visible = true;
-            statsLabel.Visible = false;
-            statspromptsLabel.Visible = false;
+            
         }
         private void dictionaryAddButton_Click(object sender, EventArgs e)
         {
+            //check if the word is 5 letter, because it has to 5 letters for the program to work
             if (dictionaryaddInput.TextLength == 5)
             {
+                //if it is a five letter word
+                //make a string variable that is equal to the input text to the lowercase
                 string addWord = dictionaryaddInput.Text.ToLower();
+
+                //if the word is already in the list tell the user and don't add it to the list
                 if (readText.Contains(addWord))
                 {
                     answerLabel.Size = new Size(500, 500);
@@ -1026,62 +1030,74 @@ namespace Test
                     this.Text = "Word is already in dictionary";
 
                 }
+                //Check if the word isn't in the list, 
                 else
                 {
+                    //add the word to the list and sort the list
                     readText.Add(addWord);
+
+                    //The sort might not be working propertly right now
                     readText.Sort();
+
+                    //then write the contents of the readText back to the dictionary file
                     File.WriteAllLines(path, readText);
 
+                    //clear the adding input and redraw the list text to include the updated words
                     dictionaryaddInput.Clear();
                     dictionaryListOutput.Text = File.ReadAllText(path);
                 }
-               
 
-                //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
-
-                //readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
-
-                //dictionaryListOutput.Text = File.ReadAllLines(path).ToString();
-
-                //dictionaryListOutput.Text = $"{File.ReadAllLines(path, Encoding.UTF8)}";
                 Refresh();
-
             }
-
         }
         private void dictionaryRemoveButton_Click(object sender, EventArgs e)
         {
+            //make a string variable that holds the word that is to be removed, changed to lowercase
             string removeWord = dictionaryremoveInput.Text.ToLower();
 
+            //check the entirity of reaText to see if it contains the word
             for (int i = 0; i < readText.Count; i++)
             {
                 if (readText.Contains(removeWord))
                 {
+                    //If the word is in the list remove the word from the list
                     readText.Remove(removeWord);
-                    //readText.RemoveAt(i);
 
+                    //Then write the updated words back to the dictionary file
                     File.WriteAllLines(path, readText);
+
+                    //Redraw the text to be the updated list
                     readText = File.ReadAllLines(path, Encoding.UTF8).ToList();
+                }
+                else
+                {
+                    //If the word is not in the list to remove
+                    //Make a label show up to tell the user that it isn't in the list to remove
+                    answerLabel.Size = new Size(500, 500);
+                    answerLabel.Visible = true;
+                    answerLabel.Text = "The word is not in the list";
+                    //this.Text = "The word is not in the list ";
                 }
             }
 
+            //clear the remove input textbox
             dictionaryremoveInput.Clear();
 
+            //update the text in the scroll list to the updated words
             dictionaryListOutput.Text = File.ReadAllText(path);
-
 
             Refresh();
         }
 
-        private void streakButton_Click(object sender, EventArgs e)
-        {
-
-        }
         private void statsButton_Click(object sender, EventArgs e)
         {
+            //Shows the stats of games that have been played
+            //Win percentage doesn't work correctly\
 
+            //If the stats are already visible make them invisble to make a toggle button
             if(statsLabel.Visible == true)
             {
+                //Make them all not visible
                 statsLabel.Visible = false;
                 statspromptsLabel.Visible = false;
                 for(int i = 0; i < GuessDistributions.Count; i++)
@@ -1089,10 +1105,13 @@ namespace Test
                     GuessDistributions[i].Visible = false;
                     GuessStatlabels[i].Visible = false ;
                 }
+                //set the form state back to normal
                 this.WindowState = FormWindowState.Normal;
             }
             else
             {
+                //if the stats aren't on the screen maximize the screen to see them
+                //And call GameStats to write them all to the screen
                 this.WindowState = FormWindowState.Maximized;
                 GameStats();
                 guessedcorrectlyLabel.Visible = false;
@@ -1119,18 +1138,24 @@ namespace Test
                 GuessDistributions[i].Text = $"{Guesses[i]}";
             }
 
+            //Based on the number of guesses it took the player to complete the game
+            //Change the size of the label to form a "chart" of the guess distribution
             for (int i = 0; i < Guesses.Count; i++)
             {
                 if (Guesses[i] == 1)
                 {
+                    //if the player guessed the word in 1 guess
+                    //make that distrution label have a width of 75
                     GuessDistributions[i].Size = new Size(75, GuessDistributions[i].Height);
                 }
                 else if (Guesses[i] == 2)
                 {
+                    //if 2 guesses make width 150
                     GuessDistributions[i].Size = new Size(150, GuessDistributions[i].Height);
                 }
                 else if (Guesses[i] == 3)
                 {
+                    //add 75 for each guess
                     GuessDistributions[i].Size = new Size(225, GuessDistributions[i].Height);
                 }
                 else if (Guesses[i] == 4)
@@ -1150,6 +1175,8 @@ namespace Test
                     GuessDistributions[i].Size = new Size(25, GuessDistributions[i].Height);
                 }
 
+                //If the player lost the game change that GuessDistrubtion label to red
+                //This changes all the labels when it shouldn't, but its a minor bug I didn't have time or care to fix
                 if (gameState == "Lost")
                 {
                     GuessDistributions[i].BackColor = Color.Red;
